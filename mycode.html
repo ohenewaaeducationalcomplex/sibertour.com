@@ -1,0 +1,3068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiBerTour | Explore Ghana - Premium Travel Experiences</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========== GLOBAL STYLES ========== */
+:root {
+  --primary-green: #2e7d32;
+  --secondary-green: #4caf50;
+  --light-green: #e8f5e9;
+  --accent-yellow: #fbc02d;
+  --dark-yellow: #f57f17;
+  --dark-gray: #333;
+  --light-gray: #f5f5f5;
+  --medium-gray: #777;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fffaf3;
+  color: var(--dark-gray);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+a { 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+.container { 
+  width: 90%; 
+  max-width: 1200px; 
+  margin: auto; 
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-yellow));
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.section-title p {
+  color: var(--medium-gray);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.btn {
+  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+  color: var(--white);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, var(--secondary-green), var(--primary-green));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+}
+
+.btn-yellow {
+  background: linear-gradient(90deg, var(--accent-yellow), var(--dark-yellow));
+}
+
+.btn-yellow:hover {
+  background: linear-gradient(90deg, var(--dark-yellow), var(--accent-yellow));
+}
+
+/* ========== HEADER & NAVIGATION ========== */
+header {
+  background: var(--white);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            line-height: 1.2;
+        }
+
+        .logo-tagline {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: var(--dark-gray);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  position: relative;
+  padding: 5px 0;
+}
+
+nav ul li a:hover {
+  color: var(--primary-green);
+}
+
+nav ul li a.active {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+nav ul li a.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: var(--accent-yellow);
+  bottom: -5px;
+  left: 0;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: var(--accent-yellow);
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.book-now-btn {
+  background: var(--accent-yellow);
+  color: var(--dark-gray);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.book-now-btn:hover {
+  background: var(--dark-yellow);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--primary-green);
+  cursor: pointer;
+}
+
+/* ========== PAGE CONTENT ========== */
+.page-content {
+  min-height: 70vh;
+  padding: 80px 0;
+}
+
+/* Home Page */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/IMG-20251225-WA0015\(1\).jpg');
+  text-align: center;
+  padding: 150px 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 20px 20px;
+  margin-top: 20px;
+     color: white;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  opacity: 0.9;
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Features Section */
+.features {
+  padding: 100px 0;
+  background-color: var(--white);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border-top: 5px solid var(--primary-green);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--light-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  color: var(--primary-green);
+  font-size: 2.2rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.feature-card p {
+  color: var(--medium-gray);
+}
+
+/* Packages Page */
+.packages {
+  padding: 80px 0;
+  background-color: var(--light-gray);
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.package-card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.package-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.package-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.package-card:hover img {
+  transform: scale(1.05);
+}
+
+.package-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--accent-yellow);
+  color: var(--dark-gray);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.package-content {
+  padding: 25px;
+}
+
+.package-content h3 {
+  color: var(--primary-green);
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.package-content p {
+  color: var(--medium-gray);
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.package-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.package-features span {
+  background: var(--light-green);
+  color: var(--primary-green);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--medium-gray);
+  font-weight: 400;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.card-buttons button {
+  flex: 1;
+}
+
+/* Gallery Page */
+.gallery-page {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  height: 280px;
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: var(--white);
+  padding: 20px;
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-categories {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  background: var(--light-green);
+  color: var(--primary-green);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.category-btn.active {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+.category-btn:hover {
+  background: var(--secondary-green);
+  color: var(--white);
+}
+
+/* About Page */
+.about {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  align-items: center;
+}
+
+.about-text h2 {
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  margin-bottom: 20px;
+  color: var(--medium-gray);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: var(--light-green);
+  border-radius: 10px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: var(--medium-gray);
+  font-weight: 600;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* Contact Page */
+.contact-page {
+  padding: 80px 0;
+  background-color: var(--light-gray);
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--light-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-details h4 {
+  margin-bottom: 8px;
+}
+
+.contact-details p {
+  color: var(--medium-gray);
+}
+
+.contact-form {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+/* Testimonials Page */
+.testimonials-page {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: var(--light-gray);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--medium-gray);
+  margin-bottom: 20px;
+  line-height: 1.8;
+  position: relative;
+}
+
+.testimonial-text::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--accent-yellow);
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  font-family: serif;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.author-info p {
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+/* Newsletter Section */
+.newsletter {
+  padding: 80px 0;
+  background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.9)), 
+              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+  color: var(--white);
+  text-align: center;
+  margin-top: 60px;
+}
+
+.newsletter h2 {
+  color: var(--white);
+  margin-bottom: 15px;
+}
+
+.newsletter p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.newsletter-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  outline: none;
+}
+
+
+/* NEW: Home Page Sections */
+
+/* Special Offers */
+.special-offers {
+  padding: 100px 0;
+  background-color: var(--light-green);
+}
+
+.offer-slider {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.offer-slide {
+  display: none;
+  padding: 40px;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.offer-slide.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.offer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.offer-badge {
+  background: var(--accent-yellow);
+  color: var(--dark-gray);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider-dot.active {
+  background: var(--primary-green);
+}
+
+/* ========== MODAL ========== */
+.modal {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h3 {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+
+
+/* Trending Destinations */
+.trending-destinations {
+  padding: 100px 0;
+  background-color: var(--white);
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.destination-card {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+  cursor: pointer;
+}
+
+.destination-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.1);
+}
+
+.destination-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: var(--white);
+  padding: 20px;
+}
+
+.destination-overlay h3 {
+  color: var(--white);
+  margin-bottom: 5px;
+}
+
+/* Latest Blog Preview */
+.latest-blog {
+  padding: 100px 0;
+  background-color: var(--light-gray);
+}
+
+.blog-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.blog-preview-card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.blog-preview-card:hover {
+  transform: translateY(-10px);
+}
+
+.blog-preview-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.blog-preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-preview-card:hover .blog-preview-image img {
+  transform: scale(1.1);
+}
+
+.blog-preview-content {
+  padding: 25px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+}
+
+.blog-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.blog-preview-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.blog-preview-content p {
+  color: var(--medium-gray);
+  margin-bottom: 15px;
+}
+
+/* Why Choose Us */
+.why-choose {
+  padding: 100px 0;
+  background-color: var(--white);
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.choose-card {
+  text-align: center;
+  padding: 30px;
+}
+
+.choose-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--light-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  color: var(--primary-green);
+  font-size: 2rem;
+}
+
+.choose-card h3 {
+  margin-bottom: 15px;
+}
+
+/* ========== BLOG PAGE ========== */
+.blog-page {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blog-post {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.post-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-post:hover .post-image img {
+  transform: scale(1.1);
+}
+
+.post-content {
+  padding: 30px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.post-content p {
+  color: var(--medium-gray);
+  margin-bottom: 20px;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background: var(--light-green);
+  color: var(--primary-green);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 60px 0 30px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-yellow);
+  bottom: 0;
+  left: 0;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.8);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a:hover {
+  color: var(--accent-yellow);
+  padding-left: 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            color: var(--secondary);
+            font-size: 18px;
+            transition: var(--transition);
+}
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: rgb(255, 153, 0);
+            transform: translateY(-3px);
+ }
+
+.copyright {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+
+/* ========== BACK TO TOP ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent-yellow);
+  color: var(--dark-gray);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 100;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ========== BLOG PAGE ========== */
+.blog-page {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blog-post {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.post-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-post:hover .post-image img {
+  transform: scale(1.1);
+}
+
+.post-content {
+  padding: 30px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.post-content p {
+  color: var(--medium-gray);
+  margin-bottom: 20px;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background: var(--light-green);
+  color: var(--primary-green);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Blog Sidebar */
+.blog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sidebar-widget {
+  background: var(--light-gray);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.widget-title {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-yellow);
+}
+
+/* Search Widget */
+.search-widget form {
+  display: flex;
+}
+
+.search-widget input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px 0 0 30px;
+  outline: none;
+}
+
+.search-widget button {
+  background: var(--primary-green);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+
+/* Categories Widget */
+.categories-list {
+  list-style: none;
+}
+
+.categories-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.categories-list li:last-child {
+  border-bottom: none;
+}
+
+.categories-list a {
+  color: var(--medium-gray);
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+}
+
+.categories-list a:hover {
+  color: var(--primary-green);
+  padding-left: 5px;
+}
+
+/* Recent Posts Widget */
+.recent-post {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.recent-post:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.recent-post-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.recent-post-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-post-content h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.recent-post-content span {
+  color: var(--medium-gray);
+  font-size: 0.85rem;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.page-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-gray);
+  border-radius: 50%;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.page-number.active {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+.page-number:hover:not(.active) {
+  background: var(--accent-yellow);
+  color: var(--dark-gray);
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--dark-yellow);
+  color: var(--white);
+  transform: translateY(-5px);
+}
+
+/* ========== PAGE TRANSITION ========== */
+.page {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.5rem; }
+  .section-title h2 { font-size: 2rem; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  
+  nav ul {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+  }
+  
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .hero { padding: 120px 20px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1.1rem; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .hero-btns .btn { width: 80%; }
+  
+  .contact-container { grid-template-columns: 1fr; }
+  .card-buttons { flex-direction: column; }
+  .about-content { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+  .hero h1 { font-size: 1.8rem; }
+  .section-title h2 { font-size: 1.7rem; }
+  .modal-content { padding: 30px 20px; }
+  .about-stats { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ========== PAGE TRANSITION ========== */
+.page {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.5rem; }
+  .section-title h2 { font-size: 2rem; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { width: 100%; }
+  .blog-container { grid-template-columns: 1fr; }
+  .offer-content { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  
+  nav ul {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+  }
+  
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .hero { padding: 120px 20px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1.1rem; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .hero-btns .btn { width: 80%; }
+  
+  .card-buttons { flex-direction: column; }
+  .destination-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-preview-grid { grid-template-columns: 1fr; }
+  .choose-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+  .hero h1 { font-size: 1.8rem; }
+  .section-title h2 { font-size: 1.7rem; }
+  .modal-content { padding: 30px 20px; }
+  .destination-grid { grid-template-columns: 1fr; }
+  .post-meta { flex-direction: column; gap: 10px; }
+  .newsletter-form button { width: 100%; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">
+          <img src="images/IMG-20251224-WA0053(1).jpg" alt="SiBerTours Logo" class="logo-img">
+      </div>
+      
+      <ul id="navMenu">
+        <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+        <li><a href="#packages" class="nav-link" data-page="packages">Packages</a></li>
+        <li><a href="#gallery" class="nav-link" data-page="gallery">Gallery</a></li>
+        <li><a href="#about" class="nav-link" data-page="about">About Us</a></li>
+        <li><a href="#testimonials" class="nav-link" data-page="testimonials">Testimonials</a></li>
+        <li><a href="#blog" class="nav-link" data-page="blog">Blog</a></li>
+        <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+      </ul>
+      
+      <a href="#packages" class="nav-link btn" data-page="packages" class="book-now-btn">Book Now</a>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main>
+  <!-- Home Page -->
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Discover Ghana's Rich Culture & Breathtaking Landscapes</h1>
+        <p>Immerse yourself in authentic Ghanaian experiences with our expertly curated tours. From cultural heritage sites to wildlife adventures.</p>
+        <div class="hero-btns">
+          <a href="#packages" class="nav-link btn" data-page="packages">Explore Tours</a>
+          <a href="#contact" class="nav-link btn btn-yellow" data-page="contact">Customize Tour</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose SiBerTour</h2>
+          <p>We provide unforgettable travel experiences with attention to detail and authentic cultural immersion.</p>
+        </div>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>Expertly Curated Itineraries</h3>
+            <p>Our tours are designed by local experts to provide authentic Ghanaian experiences.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <h3>Safety & Security</h3>
+            <p>Your safety is our priority. We maintain high safety standards for all our tours.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Local Partnerships</h3>
+            <p>We work directly with local communities to ensure authentic and sustainable tourism.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- NEW: Special Offers Section -->
+    <div class="special-offers">
+      <div class="container">
+        <div class="section-title">
+          <h2>Special Offers & Deals</h2>
+          <p>Don't miss our exclusive travel deals and limited-time offers</p>
+        </div>
+        
+        <div class="offer-slider">
+          <div class="offer-slide active">
+            <div class="offer-content">
+              <div>
+                <span class="offer-badge">30% OFF</span>
+                <h3>Early Bird Discount</h3>
+                <p>Book your cultural tour 60 days in advance and get 30% off your total booking. Perfect for planning your dream Ghana adventure ahead of time.</p>
+                <p><strong>Valid until:</strong> December 15, 2026</p>
+                <a href="#packages" class="nav-link btn" data-page="packages" style="margin-top: 20px;">Book Now</a>
+              </div>
+              <div>
+                <img src="https://images.unsplash.com/photo-1578314533174-ef01cf1d8d45?auto=format&fit=crop&w=800&q=80" alt="Special Offer" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-slide">
+            <div class="offer-content">
+              <div>
+                <span class="offer-badge">GROUP DEAL</span>
+                <h3>Family & Group Discount</h3>
+                <p>Traveling with family or friends? Get 20% off for groups of 4 or more. Perfect for family reunions, friend trips, or corporate retreats.</p>
+                <p><strong>Minimum:</strong> 4 travelers</p>
+                <a href="#contact" class="nav-link btn" data-page="contact" style="margin-top: 20px;">Inquire Now</a>
+              </div>
+              <div>
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="Group Travel" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+          </div>
+          
+          <div class="offer-slide">
+            <div class="offer-content">
+              <div>
+                <span class="offer-badge">SEASONAL</span>
+                <h3>Festival Season Special</h3>
+                <p>Experience Ghana's vibrant festivals with our exclusive festival season packages. Includes special access to festival events and cultural performances.</p>
+                <p><strong>Season:</strong> August - December 2026</p>
+                <a href="#packages" class="nav-link btn" data-page="packages" style="margin-top: 20px;">View Packages</a>
+              </div>
+              <div>
+                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Festival" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: Trending Destinations -->
+    <div class="trending-destinations">
+      <div class="container">
+        <div class="section-title">
+          <h2>Trending Destinations</h2>
+          <p>Discover Ghana's most popular and breathtaking locations</p>
+        </div>
+        
+        <div class="destination-grid">
+          <div class="destination-card">
+            <img src="images/FB_IMG_1766894472416.jpg" alt="Cape Coast">
+            <div class="destination-overlay">
+              <h3>Cape Coast Castle</h3>
+              <p>Historical UNESCO Site</p>
+            </div>
+          </div>
+          
+          <div class="destination-card">
+            <img src="images/2.jpg" alt="Mole National Park">
+            <div class="destination-overlay">
+              <h3>Mole National Park</h3>
+              <p>Wildlife Safari Destination</p>
+            </div>
+          </div>
+          
+          <div class="destination-card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Wli Waterfalls">
+            <div class="destination-overlay">
+              <h3>Wli Waterfalls</h3>
+              <p>Tallest Waterfall in West Africa</p>
+            </div>
+          </div>
+          
+          <div class="destination-card">
+            <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=800&q=80" alt="Kumasi">
+            <div class="destination-overlay">
+              <h3>Kumasi</h3>
+              <p>Cultural Heart of Ghana</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- NEW: Why Choose Us Section -->
+    <div class="why-choose">
+      <div class="container">
+        <div class="section-title">
+          <h2>What Sets Us Apart</h2>
+          <p>Experience the difference with SiBerTour's unique approach to travel</p>
+        </div>
+        
+        <div class="choose-grid">
+          <div class="choose-card">
+            <div class="choose-icon">
+              <i class="fas fa-compass"></i>
+            </div>
+            <h3>Local Expertise</h3>
+            <p>Our guides are born and raised in Ghana with deep knowledge of local culture and history.</p>
+          </div>
+          
+          <div class="choose-card">
+            <div class="choose-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Sustainable Tourism</h3>
+            <p>We prioritize eco-friendly practices and support local communities through our tours.</p>
+          </div>
+          
+          <div class="choose-card">
+            <div class="choose-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Premium Experience</h3>
+            <p>From accommodations to transportation, we ensure premium quality throughout your journey.</p>
+          </div>
+          
+          <div class="choose-card">
+            <div class="choose-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Our dedicated support team is available round the clock to assist you during your trip.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- NEW: Latest Blog Preview -->
+    <div class="latest-blog">
+      <div class="container">
+        <div class="section-title">
+          <h2>Latest Travel Insights</h2>
+          <p>Read our latest blog posts for travel tips, cultural insights, and destination guides</p>
+        </div>
+        
+        <div class="blog-preview-grid">
+          <div class="blog-preview-card">
+            <div class="blog-preview-image">
+              <img src="https://images.unsplash.com/photo-1578314533174-ef01cf1d8d45?auto=format&fit=crop&w=800&q=80" alt="Ghana Culture">
+            </div>
+            <div class="blog-preview-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar"></i> March 15, 2026</span>
+                <span><i class="far fa-user"></i> Kwame Ansah</span>
+              </div>
+              <h3>Understanding Ghanaian Cultural Etiquette</h3>
+              <p>Learn about the do's and don'ts when visiting Ghana to ensure respectful and meaningful cultural exchanges.</p>
+              <a href="#blog" class="nav-link" data-page="blog" style="color: var(--primary-green); font-weight: 600;">Read More →</a>
+            </div>
+          </div>
+          
+          <div class="blog-preview-card">
+            <div class="blog-preview-image">
+              <img src="https://images.unsplash.com/photo-1563901782136-2f96b9c7074c?auto=format&fit=crop&w=800&q=80" alt="Wildlife">
+            </div>
+            <div class="blog-preview-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar"></i> March 8, 2026</span>
+                <span><i class="far fa-user"></i> Ama Serwah</span>
+              </div>
+              <h3>Best Time to Visit Mole National Park</h3>
+              <p>A complete guide to planning your safari adventure in Ghana's largest wildlife refuge.</p>
+              <a href="#blog" class="nav-link" data-page="blog" style="color: var(--primary-green); font-weight: 600;">Read More →</a>
+            </div>
+          </div>
+          
+          <div class="blog-preview-card">
+            <div class="blog-preview-image">
+              <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=800&q=80" alt="Festivals">
+            </div>
+            <div class="blog-preview-content">
+              <div class="blog-meta">
+                <span><i class="far fa-calendar"></i> March 1, 2026</span>
+                <span><i class="far fa-user"></i> Kofi Mensah</span>
+              </div>
+              <h3>Ghana's Festival Calendar 2026</h3>
+              <p>Plan your trip around Ghana's vibrant festivals and cultural celebrations throughout the year.</p>
+              <a href="#blog" class="nav-link" data-page="blog" style="color: var(--primary-green); font-weight: 600;">Read More →</a>
+            </div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="#blog" class="nav-link btn" data-page="blog">View All Blog Posts</a>
+        </div>
+      </div>
+    </div>
+ 
+    
+    <div class="newsletter">
+      <div class="container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest travel tips, exclusive offers, and updates about new tour packages.</p>
+        
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit" class="btn btn-yellow">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Packages Page -->
+  <section id="packages" class="page">
+    <div class="packages">
+      <div class="container">
+        <div class="section-title">
+          <h2>Popular Tour Packages</h2>
+          <p>Choose from our selection of handcrafted tours designed to showcase the best of Ghana.</p>
+        </div>
+        
+        <div class="package-grid">
+          <!-- Package 1 -->
+          <div class="package-card">
+            <img src="images/Cultural and Heritage Tour.jpg" alt="Cultural Tour">
+            <div class="package-badge">Best Seller</div>
+            <div class="package-content">
+              <h3>7 Days Cultural & Heritage Tour</h3>
+              <p>Accra • Cape Coast & Elmina • Ashanti Region (Kumasi)</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> 7 Days</span>
+                <span><i class="fas fa-users"></i> Small Group</span>
+                <span><i class="fas fa-utensils"></i> Meals Included</span>
+              </div>
+              <div class="price">From $2800 <span>per person</span></div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 2 -->
+          <div class="package-card">
+            <img src="images/Safari Tour.jpg" alt="Safari Tour">
+            <div class="package-badge">Wildlife</div>
+            <div class="package-content">
+              <h3>2 Days Safari Tour – Mole National Park</h3>
+              <p>Morning, Afternoon & Evening Safaris</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> 2 Days</span>
+                <span><i class="fas fa-camera"></i> Photo Safari</span>
+                <span><i class="fas fa-hotel"></i> Lodge Stay</span>
+              </div>
+              <div class="price">From $1200 <span>per person</span></div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 3 -->
+          <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1578314533174-ef01cf1d8d45?auto=format&fit=crop&w=800&q=80" alt="Northern Region">
+            <div class="package-content">
+              <h3>2 Days Northern Region Experience</h3>
+              <p>Larabanga Mosque • Mystic Stone • Shea Butter Experience</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> 2 Days</span>
+                <span><i class="fas fa-landmark"></i> Cultural Sites</span>
+                <span><i class="fas fa-car"></i> Transportation</span>
+              </div>
+              <div class="price">From $1000 <span>per person</span></div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 4 -->
+          <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=800&q=80" alt="Volta Region">
+            <div class="package-badge">Adventure</div>
+            <div class="package-content">
+              <h3>4 Days Volta Region Adventure</h3>
+              <p>Wli Waterfalls • Mount Afadja • Tafi Atome Sanctuary</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> 4 Days</span>
+                <span><i class="fas fa-hiking"></i> Hiking</span>
+                <span><i class="fas fa-water"></i> Waterfalls</span>
+              </div>
+              <div class="price">From $1200 <span>per person</span></div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Package 5 -->
+          <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Eastern Region">
+            <div class="package-content">
+              <h3>2 Days Eastern Region Tour</h3>
+              <p>Aburi Gardens • Cedi Beads Village • Akosombo Area</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> 2 Days</span>
+                <span><i class="fas fa-leaf"></i> Botanical Gardens</span>
+                <span><i class="fas fa-car"></i> Transportation</span>
+              </div>
+              <div class="price">From $800 <span>per person</span></div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Package 6 -->
+          <div class="package-card">
+            <img src="images/Diaspora.jpg" alt="Diaspora Tour">
+            <div class="package-badge">Heritage</div>
+            <div class="package-content">
+              <h3>Diaspora and Ancestral Return Tours</h3>
+              <p>Homecoming • Heritage Reconnection • Naming Ceremony</p>
+              <div class="package-features">
+                <span><i class="fas fa-calendar"></i> Custom Days</span>
+                <span><i class="fas fa-history"></i> Ancestral Roots</span>
+                <span><i class="fas fa-users"></i> Family Groups</span>
+              </div>
+              <div class="price">Custom Pricing</div>
+              <div class="card-buttons">
+                <button class="btn itinerary-btn">Full Itinerary</button>
+                <button class="btn btn-yellow book-btn">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="#contact" class="nav-link btn" data-page="contact" style="padding: 15px 40px;">Request Custom Package</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery Page -->
+  <section id="gallery" class="page">
+    <div class="gallery-page">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ghana Through Our Lens</h2>
+          <p>Explore the beauty of Ghana captured by our travelers and guides.</p>
+        </div>
+        
+        <div class="gallery-categories">
+          <button class="category-btn active" data-category="all">All</button>
+          <button class="category-btn" data-category="landscapes">Landscapes</button>
+          <button class="category-btn" data-category="culture">Culture</button>
+          <button class="category-btn" data-category="wildlife">Wildlife</button>
+          <button class="category-btn" data-category="cities">Cities</button>
+        </div>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="landscapes">
+            <img src="images/FB_IMG_1766894322174.jpg" alt="Cape Coast Castle">
+            <div class="gallery-overlay">
+              <h4>Cape Coast Castle</h4>
+              <p>Historical UNESCO World Heritage Site</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="culture">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Traditional Festival">
+            <div class="gallery-overlay">
+              <h4>Traditional Festival</h4>
+              <p>Vibrant cultural celebrations</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="wildlife">
+            <img src="images/2.jpg" alt="Mole National Park">
+            <div class="gallery-overlay">
+              <h4>Mole National Park</h4>
+              <p>Elephants in their natural habitat</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="landscapes">
+            <img src="https://images.unsplash.com/photo-1520970014086-2208d157c9e2?auto=format&fit=crop&w=800&q=80" alt="Busua Beach">
+            <div class="gallery-overlay">
+              <h4>Busua Beach</h4>
+              <p>Pristine beaches for relaxation</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="culture">
+            <img src="images/FB_IMG_1766894404570.jpg" alt="Kente Weaving">
+            <div class="gallery-overlay">
+              <h4>Kente Weaving</h4>
+              <p>Traditional textile production</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="cities">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="Accra City">
+            <div class="gallery-overlay">
+              <h4>Accra City</h4>
+              <p>Modern capital with rich history</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="landscapes">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Wli Waterfalls">
+            <div class="gallery-overlay">
+              <h4>Wli Waterfalls</h4>
+              <p>Tallest waterfall in West Africa</p>
+            </div>
+          </div>
+          
+          <div class="gallery-item" data-category="culture">
+            <img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=800&q=80" alt="Traditional Dance">
+            <div class="gallery-overlay">
+              <h4>Traditional Dance</h4>
+              <p>Energetic cultural performances</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Page -->
+  <section id="about" class="page">
+    <div class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About SiBerTour</h2>
+          <p>Creating unforgettable travel experiences in Ghana since 2010.</p>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Our Story</h2>
+            <p>SiBerTours is a trusted tour company in Ghana dedicated to giving travelers, diasporas, and adventure lovers an unforgettable experience of Ghana’s culture, history, and natural beauty. We organize Ghana tours, diaspora heritage trips, educational tours, volunteering programs, and safari adventures designed to help you discover the real Ghana — from Accra’s modern life to the Ashanti Kingdom’s royal traditions.
+
+Explore top destinations like Cape Coast Slave Castle, Kumasi cultural centers, Mole National Park, and Volta Region waterfalls with expert local guides who bring Ghana’s stories and traditions to life. Join heritage tourism experiences that reconnect the African diaspora with their ancestral roots, including naming ceremonies, kente weaving, Adinkra symbol workshops, and traditional cooking and dance classes.</p>
+            <p>At SiBerTours, we believe travel should inspire and empower. Our tours include eco-tours, village visits, wildlife safaris, educational field trips, and community volunteering opportunities where travelers can give back while exploring. Whether you’re seeking adventure, history, or spiritual connection, we design personalized Ghana travel packages that reflect your passion and purpose.</p>
+            <p>Discover why SiBerTours is one of the top tour companies in Ghana, offering authentic African cultural experiences that combine exploration, learning, and cultural pride. Let us take you beyond the ordinary — to feel, see, and live the true spirit of Ghana.</p>
+            
+            <div class="about-stats">
+              <div class="stat-item">
+                <div class="stat-number">13+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Happy Travelers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Local Guides</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Community Projects</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-image">
+            <img src="images/IMG-20251225-WA0015(1).jpg" alt="About SiBerTour">
+          </div>
+        </div>
+        
+        <div class="features" style="padding: 80px 0 0;">
+          <div class="section-title">
+            <h2>Our Values</h2>
+          </div>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3>Sustainable Tourism</h3>
+              <p>We prioritize eco-friendly practices and support conservation efforts.</p>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-hands-helping"></i>
+              </div>
+              <h3>Community Support</h3>
+              <p>We work with local communities to ensure tourism benefits everyone.</p>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <h3>Excellence</h3>
+              <p>We strive for excellence in every aspect of our tours and services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Page -->
+  <section id="testimonials" class="page">
+    <div class="testimonials-page">
+      <div class="container">
+        <div class="section-title">
+          <h2>Traveler Testimonials</h2>
+          <p>Hear from travelers who have experienced Ghana with us.</p>
+        </div>
+        
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+             1. My 10-day Ghana tour with SiBerTours was unforgettable! From Accra to Kumasi, every stop was well organized. The team treated us like family.
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-img">
+              <div class="author-info">
+                <h4>Jessica R. (New York, USA)</h4>
+                <p>Cultural Tour, December 2025</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              The safari at Mole National Park exceeded all expectations. Seeing elephants up close in their natural habitat was a dream come true. SiBerTour organized everything perfectly.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Brown" class="author-img">
+              <div class="author-info">
+                <h4>Michael Brown</h4>
+                <p>Safari Tour, March 2025</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              As a diaspora returnee, the ancestral tour was deeply emotional and meaningful. SiBerTour helped me connect with my roots in ways I never imagined possible.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Diallo" class="author-img">
+              <div class="author-info">
+                <h4>Amina Diallo</h4>
+                <p>Diaspora Tour, July 2025</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              The Volta Region adventure was perfect for our active family. The hiking, waterfalls, and monkey sanctuary were highlights. Our guide was patient with our children.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="David Wilson" class="author-img">
+              <div class="author-info">
+                <h4>David Wilson</h4>
+                <p>Family Adventure, August 2025</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              Our corporate retreat with SiBerTour was flawlessly executed. The team-building activities in Ghana's beautiful settings brought our team closer together.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Jessica Taylor" class="author-img">
+              <div class="author-info">
+                <h4>Jessica Taylor</h4>
+                <p>Corporate Retreat, October 2025</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              The attention to detail, from accommodations to meals to transportation, was impeccable. SiBerTour made our honeymoon in Ghana absolutely magical.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Robert Chen" class="author-img">
+              <div class="author-info">
+                <h4>Robert & Maria Chen</h4>
+                <p>Honeymoon, February 2026</p>
+                <div style="color: #fbc02d;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- Blog Page -->
+  <section id="blog" class="page">
+    <div class="blog-page">
+      <div class="container">
+        <div class="section-title">
+          <h2>Travel Blog & Insights</h2>
+          <p>Explore our collection of articles, travel guides, and cultural insights about Ghana</p>
+        </div>
+        
+        <div class="blog-container">
+          <!-- Main Blog Content -->
+          <div class="blog-posts">
+            <!-- Blog Post 1 -->
+            <article class="blog-post">
+              <div class="post-image">
+                <img src="images/FB_IMG_1766894404570.jpg" alt="Ghana Culture">
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span><i class="far fa-calendar"></i> March 15, 2026</span>
+                  <span><i class="far fa-user"></i> Kwame Ansah</span>
+                  <span><i class="far fa-clock"></i> 5 min read</span>
+                </div>
+                <h3>Understanding Ghanaian Cultural Etiquette: A Visitor's Guide</h3>
+                <p>Ghana is known for its warm hospitality and rich cultural traditions. In this guide, we explore the essential cultural etiquette every visitor should know to ensure respectful and meaningful interactions with locals...</p>
+                <div class="post-tags">
+                  <span class="tag">Culture</span>
+                  <span class="tag">Travel Tips</span>
+                  <span class="tag">Etiquette</span>
+                </div>
+                <a href="#" class="btn">Read Full Article</a>
+              </div>
+            </article>
+            
+            <!-- Blog Post 2 -->
+            <article class="blog-post">
+              <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1563901782136-2f96b9c7074c?auto=format&fit=crop&w=800&q=80" alt="Wildlife Safari">
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span><i class="far fa-calendar"></i> March 8, 2026</span>
+                  <span><i class="far fa-user"></i> Ama Serwah</span>
+                  <span><i class="far fa-clock"></i> 7 min read</span>
+                </div>
+                <h3>The Ultimate Guide to Mole National Park: Ghana's Wildlife Gem</h3>
+                <p>Home to elephants, antelopes, warthogs, and over 300 species of birds, Mole National Park offers one of West Africa's best safari experiences. Discover the best times to visit, what to pack, and what wildlife to expect...</p>
+                <div class="post-tags">
+                  <span class="tag">Wildlife</span>
+                  <span class="tag">Safari</span>
+                  <span class="tag">Adventure</span>
+                </div>
+                <a href="#" class="btn">Read Full Article</a>
+              </div>
+            </article>
+            
+            <!-- Blog Post 3 -->
+            <article class="blog-post">
+              <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=800&q=80" alt="Festivals">
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span><i class="far fa-calendar"></i> March 1, 2026</span>
+                  <span><i class="far fa-user"></i> Kofi Mensah</span>
+                  <span><i class="far fa-clock"></i> 6 min read</span>
+                </div>
+                <h3>Ghana's Festival Calendar 2026: Plan Your Cultural Journey</h3>
+                <p>From the vibrant Homowo festival in Accra to the solemn Akwasidae in Kumasi, Ghana's festival calendar is packed with colorful celebrations. This guide helps you plan your trip around these unforgettable cultural experiences...</p>
+                <div class="post-tags">
+                  <span class="tag">Festivals</span>
+                  <span class="tag">Culture</span>
+                  <span class="tag">Events</span>
+                </div>
+                <a href="#" class="btn">Read Full Article</a>
+              </div>
+            </article>
+            
+            <!-- Blog Post 4 -->
+            <article class="blog-post">
+              <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Hiking">
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span><i class="far fa-calendar"></i> February 22, 2026</span>
+                  <span><i class="far fa-user"></i> Nana Yaa</span>
+                  <span><i class="far fa-clock"></i> 8 min read</span>
+                </div>
+                <h3>Hiking Ghana: From Mount Afadja to the Aburi Hills</h3>
+                <p>Ghana offers incredible hiking opportunities for all skill levels. Explore our guide to the best hiking trails, including Mount Afadja (the highest point in Ghana), the Aburi Botanical Gardens, and the stunning Wli Waterfalls trail...</p>
+                <div class="post-tags">
+                  <span class="tag">Hiking</span>
+                  <span class="tag">Adventure</span>
+                  <span class="tag">Nature</span>
+                </div>
+                <a href="#" class="btn">Read Full Article</a>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Blog Sidebar -->
+          <aside class="blog-sidebar">
+            <!-- Search Widget -->
+            <div class="sidebar-widget search-widget">
+              <h3 class="widget-title">Search Blog</h3>
+              <form>
+                <input type="text" placeholder="Search articles...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </form>
+            </div>
+            
+            <!-- Categories Widget -->
+            <div class="sidebar-widget categories-widget">
+              <h3 class="widget-title">Categories</h3>
+              <ul class="categories-list">
+                <li><a href="#">Culture & Heritage <span>(12)</span></a></li>
+                <li><a href="#">Wildlife & Nature <span>(8)</span></a></li>
+                <li><a href="#">Travel Tips <span>(15)</span></a></li>
+                <li><a href="#">Food & Cuisine <span>(6)</span></a></li>
+                <li><a href="#">Festivals & Events <span>(9)</span></a></li>
+                <li><a href="#">Adventure Travel <span>(7)</span></a></li>
+              </ul>
+            </div>
+            
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget recent-posts-widget">
+              <h3 class="widget-title">Recent Posts</h3>
+              <div class="recent-post">
+                <div class="recent-post-img">
+                  <img src="https://images.unsplash.com/photo-1578314533174-ef01cf1d8d45?auto=format&fit=crop&w=200&q=80" alt="Recent Post">
+                </div>
+                <div class="recent-post-content">
+                  <h4>Understanding Ghanaian Cultural Etiquette</h4>
+                  <span>March 15, 2026</span>
+                </div>
+              </div>
+              
+              <div class="recent-post">
+                <div class="recent-post-img">
+                  <img src="https://images.unsplash.com/photo-1563901782136-2f96b9c7074c?auto=format&fit=crop&w=200&q=80" alt="Recent Post">
+                </div>
+                <div class="recent-post-content">
+                  <h4>Best Time to Visit Mole National Park</h4>
+                  <span>March 8, 2026</span>
+                </div>
+              </div>
+              
+              <div class="recent-post">
+                <div class="recent-post-img">
+                  <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=200&q=80" alt="Recent Post">
+                </div>
+                <div class="recent-post-content">
+                  <h4>Ghana's Festival Calendar 2026</h4>
+                  <span>March 1, 2026</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Newsletter Widget -->
+            <div class="sidebar-widget newsletter-widget">
+              <h3 class="widget-title">Stay Updated</h3>
+              <p>Subscribe to our blog newsletter for the latest travel insights and tips.</p>
+              <form style="margin-top: 15px;">
+                <input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px;">
+                <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+              </form>
+            </div>
+          </aside>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <a href="#" class="page-number active">1</a>
+          <a href="#" class="page-number">2</a>
+          <a href="#" class="page-number">3</a>
+          <a href="#" class="page-number">4</a>
+          <a href="#" class="page-number">Next →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <!-- Contact Page -->
+  <section id="contact" class="page">
+    <div class="contact-page">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+          <p>Have questions or ready to book your Ghana adventure? Contact us today!</p>
+        </div>
+        
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Our Office</h4>
+                <p>123 Tourism Street, Accra, Ghana</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Call Us</h4>
+                <p>+233 241 564 589</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email Us</h4>
+                <p>sibertoursghana68@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Working Hours</h4>
+                <p>Monday - Friday: 8am - 6pm<br>Saturday: 9am - 4pm</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Social Media</h4>
+                <div class="social-links">
+                  <a href="https://www.facebook.com/share/1CXUG9ncXH/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/siber_tours?igsh=MW8zejRxczh0Z3N6OQ%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                  <a href="https://youtube.com/@sibertours?si=V7cqlB4p0d6Mv1ZR"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.tiktok.com/@siber_tours?_r=1&_t=ZP-917gDHRoJlm"><i class="fab fa-tiktok"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              
+              <div class="form-group">
+                <label for="tour">Tour Interest</label>
+                <select id="tour" name="tour">
+                  <option value="">Select a tour package</option>
+                  <option value="cultural">Cultural & Heritage Tour</option>
+                  <option value="safari">Safari Tour</option>
+                  <option value="northern">Northern Region Experience</option>
+                  <option value="volta">Volta Region Adventure</option>
+                  <option value="custom">Custom Tour</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell us about your travel plans, questions, or special requests..."></textarea>
+              </div>
+              
+              <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modals -->
+<div class="modal" id="itineraryModal">
+  <div class="modal-content">
+    <h3>Request Full Itinerary</h3>
+    <form id="itineraryForm">
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" placeholder="Tour Package of Interest" required>
+      </div>
+      
+      <div class="form-group">
+        <textarea rows="4" placeholder="Additional questions or special requests"></textarea>
+      </div>
+      
+      <button type="submit" class="btn">Submit Request</button>
+      <button type="button" class="btn btn-yellow close-modal" style="margin-top: 15px; background: #ddd; color: #333;">Close</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="bookingModal">
+  <div class="modal-content">
+    <h3>Book Your Tour</h3>
+    <form id="bookingForm">
+      <div class="form-group">
+        <input type="text" placeholder="Full Name" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" placeholder="Email Address" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="tel" placeholder="Phone Number" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" placeholder="Tour Package" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Travel Date</label>
+        <input type="date" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Number of Travelers</label>
+        <select required>
+          <option value="">Select</option>
+          <option value="1">1 Traveler</option>
+          <option value="2">2 Travelers</option>
+          <option value="3-5">3-5 Travelers</option>
+          <option value="6+">6+ Travelers</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn">Complete Booking</button>
+      <button type="button" class="btn btn-yellow close-modal" style="margin-top: 15px; background: #ddd; color: #333;">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>SiBerTour</h3>
+        <p>Creating unforgettable travel experiences in Ghana since 2010. We specialize in cultural immersion, wildlife adventures, and heritage tours.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home" class="nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#packages" class="nav-link" data-page="packages"><i class="fas fa-chevron-right"></i> Tour Packages</a></li>
+          <li><a href="#gallery" class="nav-link" data-page="gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="#about" class="nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#testimonials" class="nav-link" data-page="testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+          <li><a href="#contact" class="nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Tourism Street, Accra, Ghana</a></li>
+          <li><a href="tel:+233 241 564 589"><i class="fas fa-phone-alt"></i> +233 241 564 589</a></li>
+          <li><a href="mailto:sibertoursghana68@gmail.com"><i class="fas fa-envelope"></i> sibertoursghana68@gmail.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8am-6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2026 SiBerTour Ghana. All Rights Reserved. | Designed with  <i class="fas fa-heart" style="color: #fbc02d;"></i> for Ghana Tourism <b>| Design By GGCL:+233 245 324 485</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// DOM Elements
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+const itineraryModal = document.getElementById('itineraryModal');
+const bookingModal = document.getElementById('bookingModal');
+const itineraryBtns = document.querySelectorAll('.itinerary-btn');
+const bookBtns = document.querySelectorAll('.book-btn');
+const closeModalBtns = document.querySelectorAll('.close-modal');
+const backToTop = document.getElementById('backToTop');
+const navLinks = document.querySelectorAll('.nav-link');
+const pages = document.querySelectorAll('.page');
+const categoryBtns = document.querySelectorAll('.category-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+const sliderDots = document.querySelectorAll('.slider-dot');
+const offerSlides = document.querySelectorAll('.offer-slide');
+
+
+// Mobile Menu Toggle
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  menuToggle.innerHTML = navMenu.classList.contains('active') 
+    ? '<i class="fas fa-times"></i>' 
+    : '<i class="fas fa-bars"></i>';
+});
+
+// Page Navigation
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Get target page
+    const pageId = link.getAttribute('data-page');
+    
+    // Update active nav link
+    navLinks.forEach(navLink => {
+      navLink.classList.remove('active');
+    });
+    link.classList.add('active');
+    
+    // Hide all pages
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+    
+    // Show target page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Close mobile menu
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Modal Functions
+itineraryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    itineraryModal.style.display = 'flex';
+  });
+});
+
+bookBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    bookingModal.style.display = 'flex';
+  });
+});
+
+closeModalBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    itineraryModal.style.display = 'none';
+    bookingModal.style.display = 'none';
+  });
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+  if (e.target === itineraryModal) itineraryModal.style.display = 'none';
+  if (e.target === bookingModal) bookingModal.style.display = 'none';
+});
+
+// Back to Top Button
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('active');
+  } else {
+    backToTop.classList.remove('active');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Form Submissions
+document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you for your message! We will get back to you within 24 hours.');
+  e.target.reset();
+});
+
+document.getElementById('itineraryForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you! Your itinerary request has been submitted. We will email it to you shortly.');
+  itineraryModal.style.display = 'none';
+  e.target.reset();
+});
+
+document.getElementById('bookingForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you for your booking request! Our team will contact you within 2 hours to confirm your tour.');
+  bookingModal.style.display = 'none';
+  e.target.reset();
+});
+
+document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you for subscribing to our newsletter!');
+  e.target.reset();
+});
+
+// Gallery Filter
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update active button
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const category = btn.getAttribute('data-category');
+    
+    // Filter gallery items
+    galleryItems.forEach(item => {
+      if (category === 'all' || item.getAttribute('data-category') === category) {
+        item.style.display = 'block';
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        }, 10);
+      } else {
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
+});
+
+// Add scroll animation to elements
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Animate cards on scroll
+document.querySelectorAll('.feature-card, .package-card, .testimonial-card').forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(card);
+});
+
+// Initialize gallery items
+galleryItems.forEach(item => {
+  item.style.transition = 'all 0.3s ease';
+});
+
+// Check URL hash on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.substring(1);
+  const validPages = ['home', 'packages', 'gallery', 'about', 'testimonials', 'contact'];
+  
+  if (validPages.includes(hash)) {
+    // Update active nav link
+    navLinks.forEach(navLink => {
+      navLink.classList.remove('active');
+      if (navLink.getAttribute('data-page') === hash) {
+        navLink.classList.add('active');
+      }
+    });
+    
+    // Hide all pages
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+    
+    // Show target page
+    document.getElementById(hash).classList.add('active');
+  }
+  
+  // Add hash to URL when navigating
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const pageId = link.getAttribute('data-page');
+      window.history.pushState(null, null, `#${pageId}`);
+    });
+  });
+});
+
+// Page Navigation
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Get target page
+    const pageId = link.getAttribute('data-page');
+    
+    // Update active nav link
+    navLinks.forEach(navLink => {
+      navLink.classList.remove('active');
+    });
+    link.classList.add('active');
+    
+    // Hide all pages
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+    
+    // Show target page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Close mobile menu
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Back to Top Button
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('active');
+  } else {
+    backToTop.classList.remove('active');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Special Offers Slider
+let currentSlide = 0;
+
+function showSlide(index) {
+  // Hide all slides
+  offerSlides.forEach(slide => {
+    slide.classList.remove('active');
+  });
+  
+  // Remove active class from all dots
+  sliderDots.forEach(dot => {
+    dot.classList.remove('active');
+  });
+  
+  // Show current slide
+  offerSlides[index].classList.add('active');
+  sliderDots[index].classList.add('active');
+  currentSlide = index;
+}
+
+// Add click events to slider dots
+sliderDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    showSlide(index);
+  });
+});
+
+// Auto-rotate slides
+let slideInterval = setInterval(() => {
+  currentSlide = (currentSlide + 1) % offerSlides.length;
+  showSlide(currentSlide);
+}, 5000);
+
+// Pause slider on hover
+const offerSlider = document.querySelector('.offer-slider');
+offerSlider.addEventListener('mouseenter', () => {
+  clearInterval(slideInterval);
+});
+
+offerSlider.addEventListener('mouseleave', () => {
+  slideInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % offerSlides.length;
+    showSlide(currentSlide);
+  }, 5000);
+});
+
+// Form Submissions
+document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you for subscribing to our newsletter!');
+  e.target.reset();
+});
+
+
+
+</script>
+</body>
+</html>
