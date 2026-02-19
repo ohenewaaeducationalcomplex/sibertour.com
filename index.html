@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Voting System</title>
+    <!-- Firebase SDK (compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <style>
+        /* ========== GLOBAL STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 1200px;
+            padding: 30px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        #auth-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #user-info {
+            color: #555;
+        }
+
+        /* ========== ADMIN TABS ========== */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ========== FORMS ========== */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button[type="submit"] {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button[type="submit"]:hover {
+            background: #5a67d8;
+        }
+
+        /* ========== LISTS ========== */
+        .position-item, .candidate-item, .student-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .candidate-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .delete-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        /* ========== VOTING SECTION ========== */
+        .position-block {
+            margin-bottom: 30px;
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .position-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .vote-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .vote-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .vote-card.selected {
+            border-color: #667eea;
+            background: #f0f3ff;
+        }
+
+        .vote-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .vote-card h4 {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .vote-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .vote-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .vote-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* ========== RESULTS ========== */
+        .position-results {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .result-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            gap: 10px;
+        }
+
+        .result-label {
+            width: 120px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .result-percent {
+            min-width: 70px;
+            text-align: right;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .result-bar {
+                flex-wrap: wrap;
+            }
+            
+            .result-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗳️ School Election System</h1>
+            <div id="auth-section">
+                <button id="login-btn" class="btn">Login with Google</button>
+                <button id="logout-btn" class="btn hidden">Logout</button>
+                <span id="user-info" class="hidden"></span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Admin Panel (hidden by default) -->
+            <section id="admin-section" class="hidden">
+                <h2>Admin Panel</h2>
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="positions">Positions</button>
+                    <button class="tab-btn" data-tab="candidates">Candidates</button>
+                    <button class="tab-btn" data-tab="students">Students</button>
+                    <button class="tab-btn" data-tab="settings">Election Settings</button>
+                </div>
+
+                <!-- Positions Tab -->
+                <div id="positions-tab" class="tab-content active">
+                    <h3>Manage Positions</h3>
+                    <form id="add-position-form">
+                        <input type="text" id="position-name" placeholder="Position name (e.g. President)" required>
+                        <button type="submit">Add Position</button>
+                    </form>
+                    <div id="positions-list"></div>
+                </div>
+
+                <!-- Candidates Tab -->
+                <div id="candidates-tab" class="tab-content">
+                    <h3>Manage Candidates</h3>
+                    <form id="add-candidate-form">
+                        <select id="candidate-position" required>
+                            <option value="">Select Position</option>
+                        </select>
+                        <input type="text" id="candidate-name" placeholder="Candidate name" required>
+                        <textarea id="candidate-desc" placeholder="Description"></textarea>
+                        <input type="file" id="candidate-image" accept="image/*" required>
+                        <button type="submit">Add Candidate</button>
+                    </form>
+                    <div id="candidates-list"></div>
+                </div>
+
+                <!-- Students Tab -->
+                <div id="students-tab" class="tab-content">
+                    <h3>Create Student Accounts</h3>
+                    <form id="add-student-form">
+                        <input type="text" id="student-name" placeholder="Full name" required>
+                        <input type="email" id="student-email" placeholder="Email" required>
+                        <input type="text" id="student-class" placeholder="Class/Grade">
+                        <button type="submit">Create Account</button>
+                    </form>
+                    <div id="students-list"></div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settings-tab" class="tab-content">
+                    <h3>Election Timing</h3>
+                    <form id="election-settings-form">
+                        <label>Start Date & Time: <input type="datetime-local" id="start-time" required></label>
+                        <label>End Date & Time: <input type="datetime-local" id="end-time" required></label>
+                        <button type="submit">Save Settings</button>
+                    </form>
+                    <div id="current-settings"></div>
+                </div>
+            </section>
+
+            <!-- Student Voting Section (hidden by default) -->
+            <section id="voting-section" class="hidden">
+                <h2>Vote Now</h2>
+                <div id="positions-voting-container"></div>
+                <div id="vote-message"></div>
+            </section>
+
+            <!-- Live Results Section (always visible) -->
+            <section id="results-section">
+                <h2>Live Results</h2>
+                <div id="results-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // ========== FIREBASE CONFIGURATION ==========
+        // Replace with your own Firebase project config
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // ========== CONSTANTS ==========
+        const ADMIN_EMAIL = 'pappau339@gmail.com'; // Admin email updated
+
+        // ========== DOM ELEMENTS ==========
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userInfo = document.getElementById('user-info');
+        const adminSection = document.getElementById('admin-section');
+        const votingSection = document.getElementById('voting-section');
+        const resultsContainer = document.getElementById('results-container');
+
+        // Admin tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Student votes cache
+        let studentVotes = {}; // { positionId: candidateId }
+
+        // ========== AUTH STATE ==========
+        auth.onAuthStateChanged(async user => {
+            if (user) {
+                const isAdmin = user.email === ADMIN_EMAIL;
+                // Update UI
+                loginBtn.classList.add('hidden');
+                logoutBtn.classList.remove('hidden');
+                userInfo.textContent = `Logged in as ${user.displayName || user.email}`;
+                userInfo.classList.remove('hidden');
+
+                if (isAdmin) {
+                    // Show admin panel, hide voting
+                    adminSection.classList.remove('hidden');
+                    votingSection.classList.add('hidden');
+                    loadAdminData(); // Load all admin data
+                } else {
+                    // Student
+                    adminSection.classList.add('hidden');
+                    votingSection.classList.remove('hidden');
+                    await loadVotingInterface();
+                    await checkStudentVotes(user.uid);
+                }
+            } else {
+                // Not logged in
+                loginBtn.classList.remove('hidden');
+                logoutBtn.classList.add('hidden');
+                userInfo.classList.add('hidden');
+                adminSection.classList.add('hidden');
+                votingSection.classList.add('hidden');
+            }
+        });
+
+        // ========== LOGIN / LOGOUT ==========
+        loginBtn.addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).catch(error => {
+                console.error('Login error:', error);
+                alert('Login failed. Please try again.');
+            });
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // ========== ADMIN FUNCTIONS ==========
+        async function loadAdminData() {
+            await loadPositionsDropdown();
+            await loadPositionsList();
+            await loadCandidatesList();
+            await loadStudentsList();
+            await loadElectionSettings();
+        }
+
+        // Positions dropdown for candidate form
+        async function loadPositionsDropdown() {
+            const snapshot = await db.collection('positions').orderBy('name').get();
+            const select = document.getElementById('candidate-position');
+            select.innerHTML = '<option value="">Select Position</option>';
+            snapshot.forEach(doc => {
+                const option = document.createElement('option');
+                option.value = doc.id;
+                option.textContent = doc.data().name;
+                select.appendChild(option);
+            });
+        }
+
+        // Positions list (admin)
+        async function loadPositionsList() {
+            const snapshot = await db.collection('positions').orderBy('name').get();
+            const container = document.getElementById('positions-list');
+            container.innerHTML = '';
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const div = document.createElement('div');
+                div.className = 'position-item';
+                div.innerHTML = `
+                    <span>${data.name}</span>
+                    <button class="delete-btn" data-id="${doc.id}">Delete</button>
+                `;
+                div.querySelector('.delete-btn').addEventListener('click', () => deletePosition(doc.id));
+                container.appendChild(div);
+            });
+        }
+
+        async function deletePosition(id) {
+            if (confirm('Delete this position? All associated candidates will also be deleted.')) {
+                // Delete candidates first
+                const candidates = await db.collection('candidates').where('positionId', '==', id).get();
+                const batch = db.batch();
+                candidates.forEach(doc => batch.delete(doc.ref));
+                batch.delete(db.collection('positions').doc(id));
+                await batch.commit();
+                loadAdminData();
+            }
+        }
+
+        // Add position
+        document.getElementById('add-position-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('position-name').value;
+            await db.collection('positions').add({ name });
+            document.getElementById('position-name').value = '';
+            loadAdminData();
+        });
+
+        // Candidates list (admin)
+        async function loadCandidatesList() {
+            const snapshot = await db.collection('candidates').orderBy('createdAt', 'desc').get();
+            const container = document.getElementById('candidates-list');
+            container.innerHTML = '';
+
+            // Get positions for display
+            const positionsMap = {};
+            const posSnapshot = await db.collection('positions').get();
+            posSnapshot.forEach(doc => positionsMap[doc.id] = doc.data().name);
+
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const div = document.createElement('div');
+                div.className = 'candidate-item';
+                div.innerHTML = `
+                    <img src="${data.imageUrl}" alt="${data.name}">
+                    <div>
+                        <strong>${data.name}</strong><br>
+                        <span>Position: ${positionsMap[data.positionId] || 'Unknown'}</span><br>
+                        <small>${data.description || ''}</small>
+                    </div>
+                    <button class="delete-btn" data-id="${doc.id}">Delete</button>
+                `;
+                div.querySelector('.delete-btn').addEventListener('click', () => deleteCandidate(doc.id));
+                container.appendChild(div);
+            });
+        }
+
+        async function deleteCandidate(id) {
+            if (confirm('Delete this candidate?')) {
+                await db.collection('candidates').doc(id).delete();
+                loadAdminData();
+            }
+        }
+
+        // Add candidate with image upload
+        document.getElementById('add-candidate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const positionId = document.getElementById('candidate-position').value;
+            const name = document.getElementById('candidate-name').value;
+            const desc = document.getElementById('candidate-desc').value;
+            const file = document.getElementById('candidate-image').files[0];
+
+            if (!file) return;
+
+            try {
+                // Upload image
+                const storageRef = storage.ref(`candidates/${Date.now()}_${file.name}`);
+                await storageRef.put(file);
+                const imageUrl = await storageRef.getDownloadURL();
+
+                await db.collection('candidates').add({
+                    positionId,
+                    name,
+                    description: desc,
+                    imageUrl,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Reset form
+                document.getElementById('candidate-position').value = '';
+                document.getElementById('candidate-name').value = '';
+                document.getElementById('candidate-desc').value = '';
+                document.getElementById('candidate-image').value = '';
+                loadAdminData();
+            } catch (error) {
+                console.error('Error adding candidate:', error);
+                alert('Error adding candidate. Check console.');
+            }
+        });
+
+        // Students list (admin)
+        async function loadStudentsList() {
+            const snapshot = await db.collection('students').get();
+            const container = document.getElementById('students-list');
+            container.innerHTML = '';
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const div = document.createElement('div');
+                div.className = 'student-item';
+                div.innerHTML = `
+                    <span><strong>${data.name}</strong> (${data.email}) - Class: ${data.class || 'N/A'}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Add student record (note: actual Firebase Auth user must be created manually)
+        document.getElementById('add-student-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('student-name').value;
+            const email = document.getElementById('student-email').value;
+            const studentClass = document.getElementById('student-class').value;
+
+            try {
+                await db.collection('students').add({
+                    name,
+                    email,
+                    class: studentClass,
+                    uid: '' // will be filled when user signs up
+                });
+                alert(`Student record saved. Please create login manually in Firebase Console with email: ${email}`);
+                document.getElementById('add-student-form').reset();
+                loadStudentsList();
+            } catch (error) {
+                console.error('Error adding student:', error);
+            }
+        });
+
+        // Election settings
+        async function loadElectionSettings() {
+            const doc = await db.collection('settings').doc('election').get();
+            if (doc.exists) {
+                const data = doc.data();
+                const start = data.startTime ? data.startTime.toDate().toISOString().slice(0,16) : '';
+                const end = data.endTime ? data.endTime.toDate().toISOString().slice(0,16) : '';
+                document.getElementById('start-time').value = start;
+                document.getElementById('end-time').value = end;
+                document.getElementById('current-settings').innerHTML = `
+                    <p>Current: ${start} to ${end}</p>
+                `;
+            }
+        }
+
+        document.getElementById('election-settings-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const start = new Date(document.getElementById('start-time').value);
+            const end = new Date(document.getElementById('end-time').value);
+
+            await db.collection('settings').doc('election').set({
+                startTime: firebase.firestore.Timestamp.fromDate(start),
+                endTime: firebase.firestore.Timestamp.fromDate(end)
+            });
+            alert('Election times saved.');
+            loadElectionSettings();
+        });
+
+        // Admin tabs switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                // Activate current
+                btn.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // ========== STUDENT VOTING FUNCTIONS ==========
+        async function loadVotingInterface() {
+            const positionsSnap = await db.collection('positions').orderBy('name').get();
+            const candidatesSnap = await db.collection('candidates').get();
+
+            // Group candidates by position
+            const candidatesByPosition = {};
+            candidatesSnap.forEach(doc => {
+                const data = doc.data();
+                if (!candidatesByPosition[data.positionId]) candidatesByPosition[data.positionId] = [];
+                candidatesByPosition[data.positionId].push({ id: doc.id, ...data });
+            });
+
+            const container = document.getElementById('positions-voting-container');
+            container.innerHTML = '';
+
+            positionsSnap.forEach(doc => {
+                const position = doc.data();
+                const positionId = doc.id;
+                const candidates = candidatesByPosition[positionId] || [];
+
+                const positionDiv = document.createElement('div');
+                positionDiv.className = 'position-block';
+                positionDiv.innerHTML = `
+                    <h3 class="position-title">${position.name}</h3>
+                    <div class="candidates-grid" id="grid-${positionId}"></div>
+                `;
+                container.appendChild(positionDiv);
+
+                const grid = positionDiv.querySelector(`.candidates-grid`);
+                candidates.forEach(candidate => {
+                    const card = document.createElement('div');
+                    card.className = 'vote-card';
+                    card.dataset.candidateId = candidate.id;
+                    card.dataset.positionId = positionId;
+                    card.innerHTML = `
+                        <img src="${candidate.imageUrl}" alt="${candidate.name}">
+                        <h4>${candidate.name}</h4>
+                        <p>${candidate.description || ''}</p>
+                        <button class="vote-btn" data-position="${positionId}" data-candidate="${candidate.id}">Vote</button>
+                    `;
+                    // Attach vote button listener
+                    const voteBtn = card.querySelector('.vote-btn');
+                    voteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        castVote(positionId, candidate.id);
+                    });
+                    grid.appendChild(card);
+                });
+            });
+        }
+
+        async function castVote(positionId, candidateId) {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            // Check if election is active
+            const settingsDoc = await db.collection('settings').doc('election').get();
+            if (!settingsDoc.exists) {
+                alert('Election not configured.');
+                return;
+            }
+            const now = firebase.firestore.Timestamp.now();
+            const start = settingsDoc.data().startTime;
+            const end = settingsDoc.data().endTime;
+            if (now < start) {
+                alert('Voting has not started yet.');
+                return;
+            }
+            if (now > end) {
+                alert('Voting has ended.');
+                return;
+            }
+
+            // Check if already voted for this position
+            const voteId = `${user.uid}_${positionId}`;
+            const voteDoc = await db.collection('votes').doc(voteId).get();
+            if (voteDoc.exists) {
+                alert('You have already voted for this position.');
+                return;
+            }
+
+            try {
+                await db.collection('votes').doc(voteId).set({
+                    studentId: user.uid,
+                    positionId,
+                    candidateId,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                alert('Vote recorded!');
+                studentVotes[positionId] = candidateId;
+                // Disable all vote buttons for this position
+                document.querySelectorAll(`[data-position="${positionId}"]`).forEach(btn => btn.disabled = true);
+                // Mark card as selected
+                document.querySelectorAll(`[data-position-id="${positionId}"]`).forEach(card => {
+                    card.classList.remove('selected');
+                });
+                const selectedCard = document.querySelector(`[data-candidate-id="${candidateId}"]`);
+                if (selectedCard) selectedCard.classList.add('selected');
+            } catch (error) {
+                console.error('Vote error:', error);
+                alert('Error casting vote. You may have already voted.');
+            }
+        }
+
+        async function checkStudentVotes(studentId) {
+            const votesSnap = await db.collection('votes').where('studentId', '==', studentId).get();
+            votesSnap.forEach(doc => {
+                const data = doc.data();
+                studentVotes[data.positionId] = data.candidateId;
+            });
+
+            // Update UI to reflect existing votes
+            Object.keys(studentVotes).forEach(positionId => {
+                const candidateId = studentVotes[positionId];
+                const card = document.querySelector(`[data-candidate-id="${candidateId}"]`);
+                if (card) {
+                    card.classList.add('selected');
+                }
+                // Disable all vote buttons for this position
+                document.querySelectorAll(`[data-position="${positionId}"]`).forEach(btn => {
+                    btn.disabled = true;
+                    btn.textContent = 'Voted';
+                });
+            });
+        }
+
+        // ========== REAL-TIME RESULTS ==========
+        function listenToResults() {
+            db.collection('votes').onSnapshot(async snapshot => {
+                const positionsSnap = await db.collection('positions').get();
+                const candidatesSnap = await db.collection('candidates').get();
+
+                const positions = {};
+                positionsSnap.forEach(doc => positions[doc.id] = doc.data().name);
+
+                const candidates = {};
+                candidatesSnap.forEach(doc => candidates[doc.id] = doc.data().name);
+
+                // Count votes per candidate
+                const counts = {};
+                snapshot.forEach(doc => {
+                    const vote = doc.data();
+                    counts[vote.candidateId] = (counts[vote.candidateId] || 0) + 1;
+                });
+
+                // Group by position
+                const resultsByPosition = {};
+                candidatesSnap.forEach(doc => {
+                    const candidate = doc.data();
+                    if (!resultsByPosition[candidate.positionId]) {
+                        resultsByPosition[candidate.positionId] = [];
+                    }
+                    resultsByPosition[candidate.positionId].push({
+                        candidateId: doc.id,
+                        name: candidate.name,
+                        count: counts[doc.id] || 0
+                    });
+                });
+
+                displayResults(resultsByPosition, positions);
+            });
+        }
+
+        function displayResults(resultsByPosition, positions) {
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            for (const [positionId, candidateResults] of Object.entries(resultsByPosition)) {
+                const positionDiv = document.createElement('div');
+                positionDiv.className = 'position-results';
+                positionDiv.innerHTML = `<h3>${positions[positionId] || 'Unknown Position'}</h3>`;
+
+                const total = candidateResults.reduce((sum, c) => sum + c.count, 0);
+
+                candidateResults.forEach(c => {
+                    const percent = total > 0 ? ((c.count / total) * 100).toFixed(1) : 0;
+                    const bar = document.createElement('div');
+                    bar.className = 'result-bar';
+                    bar.innerHTML = `
+                        <span class="result-label">${c.name}</span>
+                        <div class="bar-container"><div class="bar-fill" style="width:${percent}%"></div></div>
+                        <span class="result-percent">${percent}% (${c.count})</span>
+                    `;
+                    positionDiv.appendChild(bar);
+                });
+
+                container.appendChild(positionDiv);
+            }
+
+            if (Object.keys(resultsByPosition).length === 0) {
+                container.innerHTML = '<p>No votes yet. Be the first!</p>';
+            }
+        }
+
+        // Start listening to results immediately
+        listenToResults();
+    </script>
+</body>
+</html>
